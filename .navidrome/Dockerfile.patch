@@ -19,7 +19,7 @@
 <     DOWNLOAD_URL=${CROSS_TAGLIB_RELEASES_URL}${FILE}
 <     wget ${DOWNLOAD_URL}
 ---
-> COPY .navidrome/taglib*.tar.gz .
+> COPY ../.navidrome/taglib*.tar.gz .
 43,45c33
 <     mkdir /taglib
 <     tar -xzf ${FILE} -C /taglib
