@@ -32,6 +32,10 @@ jobs:
       - name: Prepare app sources
         run: |
           git clone --branch ${{ env.APP_VERSION }} ${{ env.APP_REPO }} ${{ env.APP_NAME }}
+          pushd ${{ env.APP_NAME }}
+            # Replace base image since orinigal does not have RISC-V version
+            sed -i s%public.ecr.aws/docker/library/alpine:3.19%alpine:3.19%g Dockerfile
+          popd
 
       - name: Log into registry ${{ env.REGISTRY }}
         uses: docker/login-action@v3
