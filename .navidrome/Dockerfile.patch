@@ -30,19 +30,13 @@
 < FROM --platform=$BUILDPLATFORM public.ecr.aws/docker/library/golang:1.25-bookworm AS base
 ---
 > FROM --platform=$BUILDPLATFORM golang:1.25-trixie AS base
-99a88,98
+97a86
+>     export CGO_CFLAGS_ALLOW=".*"
+99a89,91
 >     dpkg --add-architecture riscv64
 >     apt-get update && apt-get install -y crossbuild-essential-riscv64
->     echo ------ DEBUG BEGIN ------
->     echo CWD
->     ls -alFh
->     echo ROOT
->     ls -alFh /
->     echo TAGLIB
->     ls -alFh /taglib
->     echo ------ DEBUG END ------
 > 
-125c124
+125c117
 < FROM public.ecr.aws/docker/library/alpine:3.19 AS final
 ---
 > FROM alpine:3.20 AS final
