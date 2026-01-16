@@ -1,5 +1,6 @@
-I have an OrangePi RV2 with a RISC-V Ky X1 processor (I believe it's a rebranded SpacemiT K1).
-This architecture doesn't have a lot of application images, so I'll be building them myself.
+I have an OrangePi RV2 with a RISC-V Ky X1 processor.
+
+There are very few application images for RISC-V, so I build them myself.
 
 Look at https://github.com/gechandesu?tab=packages&repo_name=rv64-container for built images.
 
@@ -8,7 +9,7 @@ Wishlist:
 - [ ] ArchiveBox
 - [ ] Navidrome
 - [ ] slskd
-- [ ] Syncthing
+- [x] Syncthing https://github.com/syncthing/syncthing
 - [ ] Transmission
 - [x] Xandikos https://github.com/jelmer/xandikos
 - [ ] Immich
