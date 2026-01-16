@@ -30,7 +30,19 @@
 < FROM --platform=$BUILDPLATFORM public.ecr.aws/docker/library/golang:1.25-bookworm AS base
 ---
 > FROM --platform=$BUILDPLATFORM golang:1.25-trixie AS base
-125c113
+100,110d87
+<     # Only Darwin (macOS) requires clang (default), Windows requires gcc, everything else can use any compiler.
+<     # So let's use gcc for everything except Darwin.
+<     if [ "$(xx-info os)" != "darwin" ]; then
+<         export CC=$(xx-info)-gcc
+<         export CXX=$(xx-info)-g++
+<         export LD_EXTRA="-extldflags '-static -latomic'"
+<     fi
+<     if [ "$(xx-info os)" = "windows" ]; then
+<         export EXT=".exe"
+<     fi
+< 
+125c102
 < FROM public.ecr.aws/docker/library/alpine:3.19 AS final
 ---
 > FROM alpine:3.20 AS final
