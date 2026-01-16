@@ -1,0 +1,28 @@
+Navidrome requires the prebuilt https://github.com/taglib/taglib.git
+
+There is taglib built on real RISC-V hardware inside Debian Trixie container.
+
+There is commands performed to build taglib objects taken from
+https://github.com/navidrome/cross-taglib/blob/93a86571064d701e868141f6540a92bc8bdac6e2/Dockerfile
+
+Target taglib version is taken form
+https://github.com/navidrome/cross-taglib/blob/93a86571064d701e868141f6540a92bc8bdac6e2/.version
+
+Run on host mashine:
+
+    docker run --rm -ti -v .:/mnt debian:trixie bash
+
+Run inside container:
+
+    TAGLIB_VERSION="2.1.1"
+    apt-get update && apt-get install -y clang lld cmake git binutils gcc g++ libc6-dev zlib1g-dev
+    git clone https://github.com/taglib/taglib.git taglib-src
+    cd taglib-src
+    git checkout v$TAGLIB_VERSION
+    git submodule update --init
+    find . -name .git | xargs rm -rf
+    TAGLIB_BUILD_OPTS="-DCMAKE_BUILD_TYPE=Release -DWITH_MP4=ON -DWITH_ASF=ON -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=OFF"
+    cmake -DCMAKE_INSTALL_PREFIX=/taglib $TAGLIB_BUILD_OPTS
+    make install # takes 10 minutes or more...
+    tar -czvf /mnt/taglib-$TAGLIB_VERSION-riscv64.tar.gz2 /taglib
+    exit

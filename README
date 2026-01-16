@@ -7,7 +7,7 @@ Look at https://github.com/gechandesu?tab=packages&repo_name=rv64-container for 
 Wishlist:
 
 - [ ] ArchiveBox
-- [ ] Navidrome
+- [x] Navidrome https://github.com/navidrome/navidrome
 - [ ] slskd
 - [x] Syncthing https://github.com/syncthing/syncthing
 - [ ] Transmission

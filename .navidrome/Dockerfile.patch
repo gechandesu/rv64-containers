@@ -1,0 +1,36 @@
+5c5
+< FROM --platform=$BUILDPLATFORM public.ecr.aws/docker/library/alpine:3.19 AS xx-build
+---
+> FROM --platform=$BUILDPLATFORM alpine:3.20 AS xx-build
+29,38c29
+< FROM --platform=$BUILDPLATFORM public.ecr.aws/docker/library/alpine:3.19 AS taglib-build
+< ARG TARGETPLATFORM
+< ARG CROSS_TAGLIB_VERSION=2.1.1-1
+< ENV CROSS_TAGLIB_RELEASES_URL=https://github.com/navidrome/cross-taglib/releases/download/v${CROSS_TAGLIB_VERSION}/
+< 
+< # wget in busybox can't follow redirects
+< RUN <<EOT
+<     apk add --no-cache wget
+<     PLATFORM=$(echo ${TARGETPLATFORM} | tr '/' '-')
+<     FILE=taglib-${PLATFORM}.tar.gz
+---
+> FROM --platform=$BUILDPLATFORM alpine:3.20 AS taglib-build
+40,41c31
+<     DOWNLOAD_URL=${CROSS_TAGLIB_RELEASES_URL}${FILE}
+<     wget ${DOWNLOAD_URL}
+---
+> COPY .navidrome/taglib*.tar.gz .
+43,45c33
+<     mkdir /taglib
+<     tar -xzf ${FILE} -C /taglib
+< EOT
+---
+> RUN tar xf taglib*.tar.gz -C /
+66c54
+< FROM --platform=$BUILDPLATFORM public.ecr.aws/docker/library/golang:1.25-bookworm AS base
+---
+> FROM --platform=$BUILDPLATFORM golang:1.25-trixie AS base
+125c113
+< FROM public.ecr.aws/docker/library/alpine:3.19 AS final
+---
+> FROM alpine:3.20 AS final
