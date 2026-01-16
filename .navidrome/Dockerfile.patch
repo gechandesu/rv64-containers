@@ -30,12 +30,6 @@
 < FROM --platform=$BUILDPLATFORM public.ecr.aws/docker/library/golang:1.25-bookworm AS base
 ---
 > FROM --platform=$BUILDPLATFORM golang:1.25-trixie AS base
-103,104c91,92
-<         export CC=$(xx-info)-gcc
-<         export CXX=$(xx-info)-g++
----
->         export CC=gcc
->         export CXX=g++
 125c113
 < FROM public.ecr.aws/docker/library/alpine:3.19 AS final
 ---
