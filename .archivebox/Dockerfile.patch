@@ -25,10 +25,12 @@
 <     && apt-get install -qq -y -t bookworm-backports --no-install-recommends \
 ---
 >     && apt-get install -qq -y -t trixie-backports --no-install-recommends \
-194c192
+194,195c192,193
 <         apt-get install -qq -y -t bookworm-backports --no-install-recommends \
+<             chromium fontconfig fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-symbola fonts-noto fonts-freefont-ttf \
 ---
 >         apt-get install -qq -y -t trixie-backports --no-install-recommends \
+>             chromium-bsu fontconfig fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst-one fonts-symbola fonts-noto fonts-freefont-ttf \
 230c228
 <     && apt-get install -qq -y -t bookworm-backports --no-install-recommends \
 ---
