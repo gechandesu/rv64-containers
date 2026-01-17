@@ -32,9 +32,7 @@ jobs:
       - name: Prepare app sources
         run: |
           git clone --branch ${{ env.APP_VERSION }} ${{ env.APP_REPO }} ${{ env.APP_NAME }}
-          sed -i ${{ env.APP_NAME }}/Dockerfile \
-              -e 's%python:3.11-slim-bookworm%python:3.11-slim-trixie%g' \
-              -e 's%bookworm-backports%trixie-backports%g'
+          patch ${{ env.APP_NAME }}/Dockerfile .archivebox/Dockerfile.patch
 
       - name: Log into registry ${{ env.REGISTRY }}
         uses: docker/login-action@v3
