@@ -37,7 +37,7 @@
 >         wget -O chromium.tar.zst https://archriscv.felixc.at/repo/extra/chromium-142.0.7444.175-1-riscv64.pkg.tar.zst \
 >         && tar xf chromium.tar.zst -C / \
 >         && /usr/bin/chromium --version \
->         && export CHROME_BINARY=/usr/bin/chromium
+>         && export CHROME_BINARY=/usr/bin/chromium; \
 230c233
 <     && apt-get install -qq -y -t bookworm-backports --no-install-recommends \
 ---
