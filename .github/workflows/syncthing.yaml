@@ -5,7 +5,7 @@ on:
 
 env:
   APP_NAME: syncthing
-  APP_VERSION: v2.0.13
+  APP_VERSION: v2.0.15
   APP_REPO: https://github.com/syncthing/syncthing
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.actor }}/syncthing
