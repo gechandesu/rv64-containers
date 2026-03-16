@@ -1,0 +1,29 @@
+41c41
+< FROM node:${NODEJS_VERSION}-alpine AS web
+---
+> FROM debian:${OS_VERSION}-slim AS web
+47c47,48
+< ENV JELLYFIN_VERSION=${JELLYFIN_VERSION}
+---
+> ENV JELLYFIN_VERSION=${JELLYFIN_VERSION} \
+>     DEBIAN_FRONTEND=noninteractive
+49,63c50,52
+< RUN apk add \
+<     autoconf \
+<     g++ \
+<     make \
+<     libpng-dev \
+<     gifsicle \
+<     alpine-sdk \
+<     automake \
+<     libtool \
+<     gcc \
+<     musl-dev \
+<     nasm \
+<     python3 \
+<     git \
+<  && git config --global --add safe.directory /jellyfin/jellyfin-web
+---
+> RUN apt-get update \
+>     && apt-get-install --yes --no-install-recommends --no-install-suggests build-essential git nodejs gifsicle libpng-dev libtool autoconf automake python3 \
+>     && git config --global --add safe.directory /jellyfin/jellyfin-web

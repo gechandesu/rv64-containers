@@ -33,6 +33,7 @@ jobs:
         run: |
           git clone --branch ${{ env.APP_VERSION }} ${{ env.APP_REPO }} ${{ env.APP_NAME }}
           git submodule update --init
+          patch ${{ env.APP_NAME }}/docker/Dockerfile .${{ env.APP_NAME }}/Dockerfile.patch
 
       - name: Log into registry ${{ env.REGISTRY }}
         uses: docker/login-action@v3
