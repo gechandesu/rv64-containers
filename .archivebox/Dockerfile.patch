@@ -30,19 +30,24 @@
 <             chromium fontconfig fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-symbola fonts-noto fonts-freefont-ttf \
 <         && export CHROME_BINARY="$(which chromium)"; \
 ---
->         apt-get install -qq -y -t trixie-backports --no-install-recommends \
+>         apt-get install -qq -y --no-install-recommends \
 >             fontconfig fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst-one fonts-symbola fonts-noto fonts-freefont-ttf \
 >         # Note: chromium package is not available on Debian Trixie for now, so we install chromium from unofficial source.
 >         && wget -O ./chromium.deb https://github.com/riscv-forks/chromium-riscv/releases/download/146.0.7680.71/chromium-browser-stable_146.0.7680.71-1_riscv64.deb \
->         && apt-get install ./chromium.deb \
->         && /usr/bin/chromium --version \
+>         && apt-get install -y --no-install-recommends --no-install-suggests ./chromium.deb \
+>         && /usr/bin/chromium-browser --version \
 >         && rm ./chromium.deb \
->         && export CHROME_BINARY=/usr/bin/chromium; \
-230c233
+>         && export CHROME_BINARY=/usr/bin/chromium-browser; \
+199c202,203
+<     && ln -s "$CHROME_BINARY" /usr/bin/chromium-browser \
+---
+>     && ln -s /opt/chromium.org/chromium /usr/lib/chromium \
+>     && ln -s /opt/chromium.org/chromium/chromium-browser /opt/chromium.org/chromium/chromium \
+230c234
 <     && apt-get install -qq -y -t bookworm-backports --no-install-recommends \
 ---
 >     && apt-get install -qq -y -t trixie-backports --no-install-recommends \
-252c255
+252c256
 <     # && apt-get install -qq -y -t bookworm-backports --no-install-recommends \
 ---
 >     # && apt-get install -qq -y -t trixie-backports --no-install-recommends \
