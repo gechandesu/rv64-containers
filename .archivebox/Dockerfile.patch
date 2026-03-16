@@ -51,3 +51,14 @@
 <     # && apt-get install -qq -y -t bookworm-backports --no-install-recommends \
 ---
 >     # && apt-get install -qq -y -t trixie-backports --no-install-recommends \
+265c269,270
+< ENV IN_DOCKER=True
+---
+> ENV IN_DOCKER=True \
+>     PYTHONPATH=/app
+282a288,292
+> RUN echo DEBUGDEBUGDEBUG \
+>     && echo ls -alFh /app; ls -alFh /app \
+>     && printenv \
+>     && echo PYTHON; python3 --version \
+>     && echo cat VERSION.txt; cat /VERSION.txt
