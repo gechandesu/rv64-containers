@@ -25,7 +25,7 @@
 <     && apt-get install -qq -y -t bookworm-backports --no-install-recommends \
 ---
 >     && apt-get install -qq -y -t trixie-backports --no-install-recommends \
-194,196c192,198
+194,196c192,199
 <         apt-get install -qq -y -t bookworm-backports --no-install-recommends \
 <             chromium fontconfig fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-symbola fonts-noto fonts-freefont-ttf \
 <         && export CHROME_BINARY="$(which chromium)"; \
@@ -36,12 +36,13 @@
 >         && wget -O chromium.deb https://github.com/riscv-forks/chromium-riscv/releases/download/146.0.7680.71/chromium-browser-stable_146.0.7680.71-1_riscv64.deb \
 >         && apt-get install ./chromium.deb
 >         && /usr/bin/chromium --version \
+>         && rm chromium.deb \
 >         && export CHROME_BINARY=/usr/bin/chromium; \
-230c232
+230c233
 <     && apt-get install -qq -y -t bookworm-backports --no-install-recommends \
 ---
 >     && apt-get install -qq -y -t trixie-backports --no-install-recommends \
-252c254
+252c255
 <     # && apt-get install -qq -y -t bookworm-backports --no-install-recommends \
 ---
 >     # && apt-get install -qq -y -t trixie-backports --no-install-recommends \
