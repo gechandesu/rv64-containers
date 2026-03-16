@@ -1,13 +1,18 @@
-41c41
+9c9,10
+< ARG FFMPEG_PACKAGE=jellyfin-ffmpeg7
+---
+> # NB: For RISC-V use Debian's version...
+> ARG FFMPEG_PACKAGE=ffmpeg
+41c42
 < FROM node:${NODEJS_VERSION}-alpine AS web
 ---
 > FROM debian:${OS_VERSION}-slim AS web
-47c47,48
+47c48,49
 < ENV JELLYFIN_VERSION=${JELLYFIN_VERSION}
 ---
 > ENV JELLYFIN_VERSION=${JELLYFIN_VERSION} \
 >     DEBIAN_FRONTEND=noninteractive
-49,63c50,52
+49,63c51,53
 < RUN apk add \
 <     autoconf \
 <     g++ \
@@ -27,12 +32,12 @@
 > RUN apt-get update \
 >     && apt-get install --yes --no-install-recommends --no-install-suggests build-essential git nodejs gifsicle libpng-dev libtool autoconf automake python3 \
 >     && git config --global --add safe.directory /jellyfin/jellyfin-web
-88c77,78
+88c78,79
 < ENV DOTNET_CLI_TELEMETRY_OPTOUT=1
 ---
 > ENV DOTNET_CLI_TELEMETRY_OPTOUT=1 \
 >     DEBIAN_FRONTEND=noninteractive
-91,95c81,89
+91,95c82,90
 <  && apt-get install --no-install-recommends --no-install-suggests --yes \
 <     curl \
 <     ca-certificates \
