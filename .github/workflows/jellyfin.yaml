@@ -48,6 +48,12 @@ jobs:
           platforms: linux/riscv64
           context: ${{ env.APP_NAME }}
           file: ${{ env.APP_NAME }}/docker/Dockerfile
+          build-args:
+            PACKAGE_ARCH: riscv64
+            DOTNET_ARCH: riscv64
+            IMAGE_ARCH: riscv64
+            TARGET_ARCH: riscv64
+            JELLYFIN_VERSION: ${{ env.APP_VERSION }}
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
