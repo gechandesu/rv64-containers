@@ -2,7 +2,7 @@ I have an OrangePi RV2 with a RISC-V Ky X1 processor.
 
 There are very few application images for RISC-V, so I build them myself.
 
-Look at https://github.com/gechandesu?tab=packages&repo_name=riscv64-container for built images.
+Look at https://github.com/gechandesu?tab=packages&repo_name=riscv64-containers for built images.
 
 Wishlist:
 
